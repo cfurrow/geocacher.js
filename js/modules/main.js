@@ -50,7 +50,6 @@ var updateLabels = function(latlng,accuracyInMeters){
 var updatePosition = function(){
   getLatLng(function(lat,lng,position){
     updateMap(map,lat,lng,position);
-  
   });
 };
 
