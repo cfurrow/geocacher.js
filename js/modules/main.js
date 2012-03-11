@@ -26,7 +26,7 @@ var updateMap = function(map,lat,lng,position){
   latlng = new mxn.LatLonPoint(lat,lng);
   accuracyInMeters = position.coords.accuracy;
   console.log("Lat: " + latlng.lat + " Lng: " + latlng.lng + " Accuracy (meters): "+accuracyInMeters);
-  map.setCenterAndZoom(latlng,15);
+  map.setCenterAndZoom(latlng,17);
 
   var accuracyInMiles = metersToMiles(accuracyInMeters);
 
