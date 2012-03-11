@@ -1,6 +1,7 @@
 var metersToFeet = function(meters){
   var feet = meters * 3.2808399;
-  return feet;
+  var rOutput = /\d+(\.\d{2,2})?/;
+  return rOutput.exec(feet)[0];;
 };
 
 var metersToMiles = function(meters){
