@@ -18,7 +18,6 @@ var setupMap = function(lat,lng,position){
     map_type:false});
 
   updateMap(map,lat,lng,position);
-  updateLabels(latlng,position.coords.accuracy);
 };
 
 var updateMap = function(map,lat,lng,position){
@@ -30,6 +29,7 @@ var updateMap = function(map,lat,lng,position){
   var accuracyInMiles = metersToMiles(accuracyInMeters);
 
   dropMarkerAndRadius(map,latlng,accuracyInMiles);
+  updateLabels(latlng,position.coords.accuracy);
 };
 
 var updateLabels = function(latlng,accuracyInMeters){
