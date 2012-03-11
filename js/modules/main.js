@@ -47,5 +47,13 @@ var updateLabels = function(latlng,accuracyInMeters){
   $labels.find("#accuracy>span").html(accuracyLabel.join(""));
 };
 
+var updatePosition = function(){
+  getLatLng(function(lat,lng,position){
+    updateMap(map,lat,lng,position);
+  
+  });
+};
+
 
 getLatLng(setupMap);
+window.updatePosition = updatePosition;
