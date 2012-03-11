@@ -1,5 +1,54 @@
+@maxWidth:800px;
+@media: desktop;
+
+@media screen and (max-device-width:768px){
+  @maxWidth:600px;
+  @media: mobile;
+}
+@media screen and (max-device-width:480px){
+  @maxWidth:400px;
+  @media: mobile;
+}
+@media screen and (max-device-width:240px){
+  @maxWidth:200px;
+  @media: mobile;
+}
+
+body{
+  width:@maxWidth;
+}
 
 #mapdiv{
-  width:320px;
-  height:240px;
+  width: @maxWidth;
+  height: @maxWidth / 2;
+}
+
+#position-history{
+  width:@maxWidth;
+  th{
+    background-color:#ccc;
+  }
+  .column{
+    padding:5px;
+    width:100px;
+
+    &.column-time,
+    &.column-lat,
+    &.column-lng,
+    &.column-accuracy{
+      border:solid 1px #ccc;
+    }
+
+    &.column-time{
+      width:160px;
+    }
+
+    &.column-lat,
+    &.column-lng{
+    }
+
+    &.column-accuracy{
+      width:200px;
+    }
+  }
 }
