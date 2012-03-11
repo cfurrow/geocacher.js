@@ -1,9 +1,10 @@
 console.log("geocacher.js - init");
 
 var getLatLng = require('navigator').getLatLng;
-var metersToMiles = require('conversion').metersToMiles;
-var metersToFeet = require('conversion').metersToFeet;
-var metersFormatted = require('conversion').metersFormatted;
+var conversion = require('conversion');
+var metersToMiles = conversion.metersToMiles;
+var metersToFeet = conversion.metersToFeet;
+var formatDecimals = conversion.formatDecimals;
 var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
 var self = this;
 var map, latlng, marker, accuracyInMeters;
@@ -37,8 +38,8 @@ var updateLabels = function(latlng,accuracyInMeters){
   var accuracyInFeet = metersToFeet(accuracyInMeters);
 
   var accuracyLabel = [];
-  accuracyLabel.push(metersFormatted(accuracyInMeters))
-  accuracyLabel.push("m/");
+  accuracyLabel.push(formatDecimals(accuracyInMeters,2));
+  accuracyLabel.push("m / ");
   accuracyLabel.push(accuracyInFeet);
   accuracyLabel.push("ft");
 
@@ -83,11 +84,11 @@ var addToHistory = function(latlng,accuracy){
   html.push("  </td>");
 
   html.push("  <td class='column column-lat'>");
-  html.push(latlng.lat);
+  html.push(formatDecimals(latlng.lat,4));
   html.push("  </td>");
 
   html.push("  <td class='column column-lng'>");
-  html.push(latlng.lng);
+  html.push(formatDecimals(latlng.lng,4));
   html.push("  </td>");
 
   html.push("  <td class='column column-accuracy'>");
