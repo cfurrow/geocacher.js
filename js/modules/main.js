@@ -45,7 +45,58 @@ var updateLabels = function(latlng,accuracyInMeters){
   $labels.find("#lat>span").html(latlng.lat);
   $labels.find("#lng>span").html(latlng.lng);
   $labels.find("#accuracy>span").html(accuracyLabel.join(""));
+
+  addToHistory(latlng,accuracyLabel.join(""));
 };
+var addToHistory = function(latlng,accuracy){
+  var now = new Date();
+  var nowHtml = [];
+  nowHtml.push(now.getYear()+1900);
+  nowHtml.push(".");
+  nowHtml.push(now.getMonth()+1);
+  nowHtml.push(".");
+  nowHtml.push(now.getDate());
+  nowHtml.push(" ");
+  nowHtml.push(now.getHours());
+  nowHtml.push(":");
+  if(now.getMinutes() < 10){
+    nowHtml.push("0"+now.getMinutes());
+  }
+  else{
+    nowHtml.push(now.getMinutes());
+  }
+  nowHtml.push(":");
+  if(now.getSeconds() < 10){
+    nowHtml.push("0"+now.getSeconds());
+  }
+  else{
+    nowHtml.push(now.getSeconds());
+  }
+
+  var html = [];
+  
+  html.push("<tr>");
+
+  html.push("  <td>");
+  html.push(nowHtml.join(""));
+  html.push("  </td>");
+
+  html.push("  <td>");
+  html.push(latlng.lat);
+  html.push("  </td>");
+
+  html.push("  <td>");
+  html.push(latlng.lng);
+  html.push("  </td>");
+
+  html.push("  <td>");
+  html.push(accuracy);
+  html.push("  </td>");
+
+  html.push("</tr>");
+
+  $(html.join("")).appendTo("#position-history");
+}
 
 var updatePosition = function(){
   getLatLng(function(lat,lng,position){
