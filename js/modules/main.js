@@ -3,6 +3,7 @@ console.log("geocacher.js - init");
 var getLatLng = require('navigator').getLatLng;
 var metersToMiles = require('conversion').metersToMiles;
 var metersToFeet = require('conversion').metersToFeet;
+var metersFormatted = require('conversion').metersFormatted;
 var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
 var self = this;
 var map, latlng, marker, accuracyInMeters;
@@ -29,14 +30,14 @@ var updateMap = function(map,lat,lng,position){
   var accuracyInMiles = metersToMiles(accuracyInMeters);
 
   dropMarkerAndRadius(map,latlng,accuracyInMiles);
-  updateLabels(latlng,position.coords.accuracy);
+  updateLabels(latlng,accuracyInMeters);
 };
 
 var updateLabels = function(latlng,accuracyInMeters){
   var accuracyInFeet = metersToFeet(accuracyInMeters);
 
   var accuracyLabel = [];
-  accuracyLabel.push(accuracyInMeters);
+  accuracyLabel.push(metersFormatted(accuracyInMeters))
   accuracyLabel.push("m/");
   accuracyLabel.push(accuracyInFeet);
   accuracyLabel.push("ft");
@@ -77,19 +78,19 @@ var addToHistory = function(latlng,accuracy){
   
   html.push("<tr>");
 
-  html.push("  <td>");
+  html.push("  <td class='column column-time'>");
   html.push(nowHtml.join(""));
   html.push("  </td>");
 
-  html.push("  <td>");
+  html.push("  <td class='column column-lat'>");
   html.push(latlng.lat);
   html.push("  </td>");
 
-  html.push("  <td>");
+  html.push("  <td class='column column-lng'>");
   html.push(latlng.lng);
   html.push("  </td>");
 
-  html.push("  <td>");
+  html.push("  <td class='column column-accuracy'>");
   html.push(accuracy);
   html.push("  </td>");
 

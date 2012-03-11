@@ -3,3 +3,32 @@
   width:320px;
   height:240px;
 }
+
+#position-history{
+  th{
+    background-color:#ccc;
+  }
+  .column{
+    padding:5px;
+    width:100px;
+
+    &.column-time,
+    &.column-lat,
+    &.column-lng,
+    &.column-accuracy{
+      border:solid 1px #ccc;
+    }
+
+    &.column-time{
+      width:160px;
+    }
+
+    &.column-lat,
+    &.column-lng{
+    }
+
+    &.column-accuracy{
+      width:200px;
+    }
+  }
+}
