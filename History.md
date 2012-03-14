@@ -1,4 +1,14 @@
 
+0.0.7 / 2012-03-14 
+==================
+
+  * Can now delete a row. styled the links as well.
+
+0.0.6 / 2012-03-14 
+==================
+
+  * Removing href="javascript" links in favor of attached click() events via jquery.
+
 0.0.5 / 2012-03-14 
 ==================
 

@@ -5,7 +5,10 @@ var store = function(object){
   });
 };
 
-var remove = function(object){
+var remove = function(key){
+  new Lawnchair(function(){
+    this.remove(key);
+  });
 };
 
 var all = function(eachcallback){

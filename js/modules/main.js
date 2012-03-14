@@ -98,14 +98,15 @@ var addToHistory = function(latlng,accuracy){
   $(html.join("")).appendTo("#position-history");
 }
 
-var addPoint = function(){
+var addPoint = function(eventObject){
+  eventObject.preventDefault();
   getLatLng(function(lat,lng,position){
     updateMap(map,lat,lng,position);
     storage.store({key:new Date().getTime(),lat:lat,lng:lng,position:position});
     history.add(new Date(),{lat:lat,lng:lng},accuracyInMeters);
   });
 };
+$(".link-addpoint").click(addPoint);
 
 getLatLng(setupMap);
-window.addPoint = addPoint;
 
