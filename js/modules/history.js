@@ -12,10 +12,14 @@ var add = function(datetime, latlng,accuracy){
 
   var html = [];
   
-  html.push("<tr>");
+  html.push("<tr class='point' id='");
+  html.push(datetime.getTime());
+  html.push("'>");
 
   html.push("  <td class='column column-time'>");
-  html.push("<a class='delete' href='javascript:deleteHistory();'>[x]</a>");
+  html.push("    <a href='#' title='Delete this point' class='link-delete' data-key='");
+  html.push(datetime.getTime());
+  html.push("'>[x]</a>");
   html.push(nowHtml);
   html.push("  </td>");
 
@@ -81,3 +85,12 @@ exports.add = add;
 exports.restoreFromStorage = restoreFromStorage;
 exports.addMarkerCallback = null;
 window.deleteHistory = deleteHistory;
+
+var deleteClick = function(eventObj){
+  eventObj.preventDefault();
+  var $link = $(this);
+  var key = $link.attr("data-key");
+  storage.remove(key);
+  $link.parents("tr#"+key).remove();
+};
+$("body").delegate(".point .link-delete","click",deleteClick);
