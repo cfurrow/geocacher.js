@@ -26,7 +26,7 @@
 
     <div id="mapdiv"></div>
     <p>
-      <a href="javascript:window.updatePosition();">Add Current Position</a>
+      <a href="javascript:window.addPoint();">Add Current Position</a>
     </p>
     <div id="labels">
       <p>
@@ -60,7 +60,8 @@
 
   <script src="js/plugins.js"></script>
   <script src="js/inject.js"></script>
-   <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  <script src="js/lawnchair-0.6.1.js"></script>
+  <script src="http://openlayers.org/api/OpenLayers.js"></script>
   <script src="js/mxn/mxn.js?(openlayers)"></script>
   <script>
     require.setModuleRoot("http://"+location.host+"/js/modules"); 
