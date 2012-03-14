@@ -23,8 +23,19 @@ var formatDecimals = function(num,dec){
   return rDecimals.exec(num)[0];
 };
 
+var outputMetersAndFeet = function(meters){
+  var accuracyInFeet = metersToFeet(meters);
+  var accuracyLabel = [];
+  accuracyLabel.push(formatDecimals(meters,2));
+  accuracyLabel.push("m / ");
+  accuracyLabel.push(accuracyInFeet);
+  accuracyLabel.push("ft");
+  return accuracyLabel.join("");
+};
+
 exports.metersToMiles = metersToMiles;
 exports.metersToFeet = metersToFeet;
 exports.metersFormatted = metersFormatted;
 exports.formatTwoDecimals = formatTwoDecimals;
 exports.formatDecimals = formatDecimals;
+exports.outputMetersAndFeet = outputMetersAndFeet;

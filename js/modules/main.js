@@ -2,10 +2,9 @@ console.log("geocacher.js - init");
 
 var getLatLng = require('navigator').getLatLng;
 var conversion = require('conversion');
-var metersToMiles = conversion.metersToMiles;
-var metersToFeet = conversion.metersToFeet;
-var formatDecimals = conversion.formatDecimals;
 var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
+var storage = require('storage');
+var history = require('history');
 var self = this;
 var map, latlng, marker, accuracyInMeters;
 
@@ -19,7 +18,15 @@ var setupMap = function(lat,lng,position){
     scale:false,
     map_type:false});
 
-  updateMap(map,lat,lng,position);
+  latlng = new mxn.LatLonPoint(lat,lng);
+  map.setCenterAndZoom(latlng,17);
+
+  history.addMarkerCallback = function(pointInfo){
+    dropMarkerAndRadius(map,latlng,pointInfo.accuracy); 
+  };
+
+  history.restoreFromStorage();
+  updateLabels(latlng,position.coords.accuracy);
 };
 
 var updateMap = function(map,lat,lng,position){
@@ -28,84 +35,29 @@ var updateMap = function(map,lat,lng,position){
   console.log("Lat: " + latlng.lat + " Lng: " + latlng.lng + " Accuracy (meters): "+accuracyInMeters);
   map.setCenterAndZoom(latlng,17);
 
-  var accuracyInMiles = metersToMiles(accuracyInMeters);
+  var accuracyInMiles = conversion.metersToMiles(accuracyInMeters);
 
   dropMarkerAndRadius(map,latlng,accuracyInMiles);
   updateLabels(latlng,accuracyInMeters);
 };
 
 var updateLabels = function(latlng,accuracyInMeters){
-  var accuracyInFeet = metersToFeet(accuracyInMeters);
-
-  var accuracyLabel = [];
-  accuracyLabel.push(formatDecimals(accuracyInMeters,2));
-  accuracyLabel.push("m / ");
-  accuracyLabel.push(accuracyInFeet);
-  accuracyLabel.push("ft");
-
   var $labels = $("#labels");
   $labels.find("#lat>span").html(latlng.lat);
   $labels.find("#lng>span").html(latlng.lng);
-  $labels.find("#accuracy>span").html(accuracyLabel.join(""));
 
-  addToHistory(latlng,accuracyLabel.join(""));
+  $labels.find("#accuracy>span").html(conversion.outputMetersAndFeet(accuracyInMeters));
+
 };
-var addToHistory = function(latlng,accuracy){
-  var now = new Date();
-  var nowHtml = [];
-  nowHtml.push(now.getYear()+1900);
-  nowHtml.push(".");
-  nowHtml.push(now.getMonth()+1);
-  nowHtml.push(".");
-  nowHtml.push(now.getDate());
-  nowHtml.push(" ");
-  nowHtml.push(now.getHours());
-  nowHtml.push(":");
-  if(now.getMinutes() < 10){
-    nowHtml.push("0"+now.getMinutes());
-  }
-  else{
-    nowHtml.push(now.getMinutes());
-  }
-  nowHtml.push(":");
-  if(now.getSeconds() < 10){
-    nowHtml.push("0"+now.getSeconds());
-  }
-  else{
-    nowHtml.push(now.getSeconds());
-  }
 
-  var html = [];
-  
-  html.push("<tr>");
-
-  html.push("  <td class='column column-time'>");
-  html.push(nowHtml.join(""));
-  html.push("  </td>");
-
-  html.push("  <td class='column column-lat'>");
-  html.push(formatDecimals(latlng.lat,4));
-  html.push("  </td>");
-
-  html.push("  <td class='column column-lng'>");
-  html.push(formatDecimals(latlng.lng,4));
-  html.push("  </td>");
-
-  html.push("  <td class='column column-accuracy'>");
-  html.push(accuracy);
-  html.push("  </td>");
-
-  html.push("</tr>");
-
-  $(html.join("")).appendTo("#position-history");
-}
-
-var updatePosition = function(){
+var addPoint = function(){
   getLatLng(function(lat,lng,position){
     updateMap(map,lat,lng,position);
+    storage.store({key:new Date().getTime(),lat:lat,lng:lng,position:position});
+    history.add(new Date(),{lat:lat,lng:lng},accuracyInMeters);
   });
 };
 
-
 getLatLng(setupMap);
-window.updatePosition = updatePosition;
+window.addPoint = addPoint;
+
