@@ -24,11 +24,11 @@ var add = function(datetime, latlng,accuracy){
   html.push("  </td>");
 
   html.push("  <td class='column column-lat'>");
-  html.push(conversion.formatDecimals(latlng.lat,4));
+  html.push(latlng.lat.toFixed(6));
   html.push("  </td>");
 
   html.push("  <td class='column column-lng'>");
-  html.push(conversion.formatDecimals(latlng.lng,4));
+  html.push(latlng.lng.toFixed(6));
   html.push("  </td>");
 
   html.push("  <td class='column column-accuracy'>");
