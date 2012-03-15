@@ -1,6 +1,9 @@
+var markers = [];
+
 var dropMarkerAndRadius = function(map,latlng,radius){
-  marker = new mxn.Marker(latlng);
+  var marker = new mxn.Marker(latlng);
   map.addMarker(marker);
+  markers.push[markers];
 
   var r = new mxn.Radius(latlng,15);
 
