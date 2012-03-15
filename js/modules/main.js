@@ -82,11 +82,11 @@ var addToHistory = function(latlng,accuracy){
   html.push("  </td>");
 
   html.push("  <td class='column column-lat'>");
-  html.push(formatDecimals(latlng.lat,4));
+  html.push(latlng.lat.toFixed(4));
   html.push("  </td>");
 
   html.push("  <td class='column column-lng'>");
-  html.push(formatDecimals(latlng.lng,4));
+  html.push(latlng.lng.toFixed(4));
   html.push("  </td>");
 
   html.push("  <td class='column column-accuracy'>");
