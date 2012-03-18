@@ -9,7 +9,7 @@ var setHistoryContainer = function(selector){
   $historyContainer = $(selector);
 };
 
-var add = function(datetime, latlng,accuracy){
+var add = function(datetime, latlng, accuracy){
   var nowHtml = formatter.getDateTimeString(datetime);
 
   var html = [];
@@ -42,16 +42,14 @@ var add = function(datetime, latlng,accuracy){
   $(html.join("")).appendTo($historyContainer);
 };
 
-var deleteHistory = function(){
-  console.log(this);
-};
-
 var restoreFromStorage = function(){
   storage.all(function(point){
-    add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
-    // add marker to map
-    if(exports.addMarkerCallback){
-      exports.addMarkerCallback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
+    if(point){
+      add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
+      // add marker to map
+      if(exports.addMarkerCallback){
+        exports.addMarkerCallback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
+      }
     }
   });
 };
@@ -60,13 +58,18 @@ exports.setHistoryContainer = setHistoryContainer;
 exports.add = add;
 exports.restoreFromStorage = restoreFromStorage;
 exports.addMarkerCallback = function(){};
-window.deleteHistory = deleteHistory;
+exports.removeMarkerCallback = function(){};
 
 var deleteClick = function(eventObj){
   eventObj.preventDefault();
   var $link = $(this);
   var key = $link.attr("data-key");
-  storage.remove(key);
-  $link.parents("tr#"+key).remove();
+  storage.get(key,function(point){
+    storage.remove(point.key);
+    $link.parents("tr#"+point.key).remove();
+    if(point.marker){
+      exports.removeMarkerCallback(point.marker);
+    }
+  });
 };
 $("body").delegate(".point .link-delete","click",deleteClick);
