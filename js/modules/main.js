@@ -23,7 +23,7 @@ var setupMap = function(lat,lng,position){
   map.setCenterAndZoom(latlng,17);
 
   history.addMarkerCallback = function(pointInfo){
-    dropMarkerAndRadius(map,latlng,pointInfo.accuracy); 
+    dropMarkerAndRadius(map,latlng,formatter.metersToMiles(pointInfo.accuracy)); 
   };
 
   history.restoreFromStorage();
