@@ -1,7 +1,7 @@
 console.log("geocacher.js - init");
 
 var getLatLng = require('navigator').getLatLng;
-var conversion = require('conversion');
+var formatter = require('formatter');
 var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
 var storage = require('storage');
 var history = require('history');
@@ -36,7 +36,7 @@ var updateMap = function(map,lat,lng,position){
   console.log("Lat: " + latlng.lat + " Lng: " + latlng.lng + " Accuracy (meters): "+accuracyInMeters);
   map.setCenterAndZoom(latlng,17);
 
-  var accuracyInMiles = conversion.metersToMiles(accuracyInMeters);
+  var accuracyInMiles = formatter.metersToMiles(accuracyInMeters);
 
   dropMarkerAndRadius(map,latlng,accuracyInMiles);
   updateLabels(latlng,accuracyInMeters);
@@ -47,7 +47,7 @@ var updateLabels = function(latlng,accuracyInMeters){
   $labels.find("#lat>span").html(latlng.lat);
   $labels.find("#lng>span").html(latlng.lng);
 
-  $labels.find("#accuracy>span").html(conversion.outputMetersAndFeet(accuracyInMeters));
+  $labels.find("#accuracy>span").html(formatter.outputMetersAndFeet(accuracyInMeters));
 };
 var addToHistory = function(latlng,accuracy){
   var now = new Date();

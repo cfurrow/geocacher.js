@@ -1,4 +1,4 @@
-var conversion = require('conversion');
+var formatter = require('formatter');
 var storage = require('storage');
 var marker = require('marker');
 require('jquery');
@@ -10,7 +10,7 @@ var setHistoryContainer = function(selector){
 };
 
 var add = function(datetime, latlng,accuracy){
-  var nowHtml = getDateTimeString(datetime);
+  var nowHtml = formatter.getDateTimeString(datetime);
 
   var html = [];
   
@@ -34,38 +34,12 @@ var add = function(datetime, latlng,accuracy){
   html.push("  </td>");
 
   html.push("  <td class='column column-accuracy'>");
-  html.push(conversion.outputMetersAndFeet(accuracy));
+  html.push(formatter.outputMetersAndFeet(accuracy));
   html.push("  </td>");
 
   html.push("</tr>");
 
   $(html.join("")).appendTo($historyContainer);
-};
-
-var getDateTimeString = function(now){
-  var nowHtml = [];
-  nowHtml.push(now.getYear()+1900);
-  nowHtml.push(".");
-  nowHtml.push(now.getMonth()+1);
-  nowHtml.push(".");
-  nowHtml.push(now.getDate());
-  nowHtml.push(" ");
-  nowHtml.push(now.getHours());
-  nowHtml.push(":");
-  if(now.getMinutes() < 10){
-    nowHtml.push("0"+now.getMinutes());
-  }
-  else{
-    nowHtml.push(now.getMinutes());
-  }
-  nowHtml.push(":");
-  if(now.getSeconds() < 10){
-    nowHtml.push("0"+now.getSeconds());
-  }
-  else{
-    nowHtml.push(now.getSeconds());
-  }
-  return nowHtml.join("");
 };
 
 var deleteHistory = function(){
