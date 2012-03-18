@@ -5,6 +5,7 @@ var conversion = require('conversion');
 var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
 var storage = require('storage');
 var history = require('history');
+require('jquery');
 var self = this;
 var map, latlng, marker, accuracyInMeters;
 

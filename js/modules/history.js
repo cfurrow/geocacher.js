@@ -1,6 +1,8 @@
 var conversion = require('conversion');
 var storage = require('storage');
 var marker = require('marker');
+require('jquery');
+
 var $historyContainer = $("#position-history");
 
 var setHistoryContainer = function(selector){
@@ -83,7 +85,7 @@ var restoreFromStorage = function(){
 exports.setHistoryContainer = setHistoryContainer;
 exports.add = add;
 exports.restoreFromStorage = restoreFromStorage;
-exports.addMarkerCallback = null;
+exports.addMarkerCallback = function(){};
 window.deleteHistory = deleteHistory;
 
 var deleteClick = function(eventObj){
