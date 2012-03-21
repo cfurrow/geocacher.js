@@ -42,13 +42,13 @@ var add = function(datetime, latlng, accuracy){
   $(html.join("")).appendTo($historyContainer);
 };
 
-var restoreFromStorage = function(){
+var restoreFromStorage = function(callback){
   storage.all(function(point){
     if(point){
       add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
       // add marker to map
-      if(exports.addMarkerCallback){
-        exports.addMarkerCallback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
+      if(callback){
+        callback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
       }
     }
   });
@@ -57,19 +57,4 @@ var restoreFromStorage = function(){
 exports.setHistoryContainer = setHistoryContainer;
 exports.add = add;
 exports.restoreFromStorage = restoreFromStorage;
-exports.addMarkerCallback = function(){};
-exports.removeMarkerCallback = function(){};
 
-var deleteClick = function(eventObj){
-  eventObj.preventDefault();
-  var $link = $(this);
-  var key = $link.attr("data-key");
-  storage.get(key,function(point){
-    storage.remove(point.key);
-    $link.parents("tr#"+point.key).remove();
-    if(point.marker){
-      exports.removeMarkerCallback(point.marker);
-    }
-  });
-};
-$("body").delegate(".point .link-delete","click",deleteClick);

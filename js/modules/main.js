@@ -17,15 +17,14 @@ var setupMap = function(lat,lng,position){
   latlng = new mxn.LatLonPoint(lat,lng);
   map.setCenterAndZoom(latlng,17);
 
-  history.addMarkerCallback = function(pointInfo){
-    dropMarkerAndRadius(map,latlng,formatter.metersToMiles(pointInfo.accuracy)); 
-  };
-
   history.removeMarkerCallback = function(marker){
     map.removeMarker(marker); 
   };
 
-  history.restoreFromStorage();
+  history.restoreFromStorage(function(pointInfo){
+    dropMarkerAndRadius(map,latlng,formatter.metersToMiles(pointInfo.accuracy)); 
+  });
+
   updateLabels(latlng,position.coords.accuracy);
 };
 
@@ -59,6 +58,7 @@ var addPoint = function(eventObject){
     updateMap(map,latlng,position);
   });
 };
+
 $(".link-addpoint").click(addPoint);
 
 getLatLng(setupMap);
