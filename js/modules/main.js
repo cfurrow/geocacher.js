@@ -5,19 +5,14 @@ var formatter = require('formatter');
 var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
 var storage = require('storage');
 var history = require('history');
-require('jquery');
+var mapstraction = require('mapstraction');
 var self = this;
 var map, latlng, marker, accuracyInMeters;
 
 // setupMap: Used as a callback from navigator.getLatLng
 var setupMap = function(lat,lng,position){
-  map = new mxn.Mapstraction('mapdiv','openlayers');
-  map.addControls({
-    pan:false,
-    zoom:'small',
-    overview:false,
-    scale:false,
-    map_type:false});
+  mapstraction.setup();
+  map = mapstraction.mapstraction;
 
   latlng = new mxn.LatLonPoint(lat,lng);
   map.setCenterAndZoom(latlng,17);
