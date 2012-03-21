@@ -1,9 +1,8 @@
 var formatter = require('formatter');
 var storage = require('storage');
 var marker = require('marker');
-require('jquery');
+var historyView = require('history.view');
 
-var $historyContainer = $("#position-history");
 
 var setHistoryContainer = function(selector){
   $historyContainer = $(selector);
@@ -38,8 +37,7 @@ var add = function(datetime, latlng, accuracy){
   html.push("  </td>");
 
   html.push("</tr>");
-
-  $(html.join("")).appendTo($historyContainer);
+  historyView.addNewHistoryRow(html.join(""));
 };
 
 var restoreFromStorage = function(callback){
