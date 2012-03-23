@@ -33,14 +33,6 @@ var all = function(eachcallback){
   });
 };
 
-var deletePointCallback = function(key){
-  this.remove(key);
-};
-
-(function(){
-  $.subscribe("deletePoint",deletePointCallback);
-})();
-
 exports.store = store;
 exports.remove = remove;
 exports.all = all;

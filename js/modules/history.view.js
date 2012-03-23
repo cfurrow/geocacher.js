@@ -1,3 +1,5 @@
+var storage = require('storage');
+var mapstraction = require('mapstraction').mapstraction;
 var $historyContainer = $("#position-history");
 
 var addNewHistoryRow = function(html){
@@ -9,13 +11,11 @@ var deleteClick = function(eventObj){
   var $link = $(this);
   var key = $link.attr("data-key");
 
-  $.publish("deletePoint",[key]);
-
   storage.get(key,function(point){
     storage.remove(point.key);
     $link.parents("tr#"+point.key).remove();
     if(point.marker){
-      exports.removeMarkerCallback(point.marker);
+      mapstraction.removeMarker(point.marker);
     }
   });
 };
