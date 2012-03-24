@@ -2,7 +2,6 @@ console.log("geocacher.js - init");
 
 var getLatLng = require('navigator').getLatLng;
 var formatter = require('formatter');
-var dropMarkerAndRadius = require('marker').dropMarkerAndRadius;
 var storage = require('storage');
 var history = require('history');
 var mapstraction = require('mapstraction');
@@ -22,7 +21,7 @@ var setupMap = function(lat,lng,position){
   };
 
   history.restoreFromStorage(function(pointInfo){
-    dropMarkerAndRadius(latlng,formatter.metersToMiles(pointInfo.accuracy)); 
+    marker.dropMarkerAndRadius(latlng,formatter.metersToMiles(pointInfo.accuracy)); 
   });
 
   updateLabels(latlng,position.coords.accuracy);
