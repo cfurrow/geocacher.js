@@ -1,14 +1,14 @@
-var conversion = require('conversion');
+var formatter = require('formatter');
 var storage = require('storage');
 var marker = require('marker');
-var $historyContainer = $("#position-history");
+var historyView = require('history.view');
 
 var setHistoryContainer = function(selector){
   $historyContainer = $(selector);
 };
 
-var add = function(datetime, latlng,accuracy){
-  var nowHtml = getDateTimeString(datetime);
+var add = function(datetime, latlng, accuracy){
+  var nowHtml = formatter.getDateTimeString(datetime);
 
   var html = [];
   
@@ -32,50 +32,21 @@ var add = function(datetime, latlng,accuracy){
   html.push("  </td>");
 
   html.push("  <td class='column column-accuracy'>");
-  html.push(conversion.outputMetersAndFeet(accuracy));
+  html.push(formatter.outputMetersAndFeet(accuracy));
   html.push("  </td>");
 
   html.push("</tr>");
-
-  $(html.join("")).appendTo($historyContainer);
+  historyView.addNewHistoryRow(html.join(""));
 };
 
-var getDateTimeString = function(now){
-  var nowHtml = [];
-  nowHtml.push(now.getYear()+1900);
-  nowHtml.push(".");
-  nowHtml.push(now.getMonth()+1);
-  nowHtml.push(".");
-  nowHtml.push(now.getDate());
-  nowHtml.push(" ");
-  nowHtml.push(now.getHours());
-  nowHtml.push(":");
-  if(now.getMinutes() < 10){
-    nowHtml.push("0"+now.getMinutes());
-  }
-  else{
-    nowHtml.push(now.getMinutes());
-  }
-  nowHtml.push(":");
-  if(now.getSeconds() < 10){
-    nowHtml.push("0"+now.getSeconds());
-  }
-  else{
-    nowHtml.push(now.getSeconds());
-  }
-  return nowHtml.join("");
-};
-
-var deleteHistory = function(){
-  console.log(this);
-};
-
-var restoreFromStorage = function(){
+var restoreFromStorage = function(callback){
   storage.all(function(point){
-    add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
-    // add marker to map
-    if(exports.addMarkerCallback){
-      exports.addMarkerCallback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
+    if(point){
+      add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
+      // add marker to map
+      if(callback){
+        callback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
+      }
     }
   });
 };
@@ -83,14 +54,4 @@ var restoreFromStorage = function(){
 exports.setHistoryContainer = setHistoryContainer;
 exports.add = add;
 exports.restoreFromStorage = restoreFromStorage;
-exports.addMarkerCallback = null;
-window.deleteHistory = deleteHistory;
 
-var deleteClick = function(eventObj){
-  eventObj.preventDefault();
-  var $link = $(this);
-  var key = $link.attr("data-key");
-  storage.remove(key);
-  $link.parents("tr#"+key).remove();
-};
-$("body").delegate(".point .link-delete","click",deleteClick);

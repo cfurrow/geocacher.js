@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet/less" type="text/css" href="css/geocacher.less" />
 
-  <script src="js/less-1.3.0.min.js"></script>
+  <script src="js/libs/less-1.3.0.min.js"></script>
 
   <script src="js/libs/modernizr-2.5.3.min.js"></script>
 </head>
@@ -55,16 +55,16 @@
   </footer>
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
+  <script src="js/libs/jquery-1.7.1.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/inject.js"></script>
-  <script src="js/lawnchair-0.6.1.js"></script>
+  <script src="js/libs/inject.js"></script>
+  <script src="js/libs/lawnchair-0.6.1.js"></script>
+  <script src="js/libs/pubsub.js"></script>
+  <script src="js/libs/underscore-min.js"></script>
   <script src="http://openlayers.org/api/OpenLayers.js"></script>
   <script src="js/mxn/mxn.js?(openlayers)"></script>
   <script>
-    require.setModuleRoot("http://"+location.host+"/js/modules"); 
+    require.setModuleRoot("/js/modules"); 
     require.setExpires(0);
     require.run("main");
   </script>

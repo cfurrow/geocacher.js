@@ -5,6 +5,12 @@ var store = function(object){
   });
 };
 
+var get = function(key,callback){
+  new Lawnchair(function(){
+    this.get(key,callback);
+  });
+};
+
 var remove = function(key){
   new Lawnchair(function(){
     this.remove(key);
@@ -18,13 +24,25 @@ var all = function(eachcallback){
       var len = allKeys.length;
       for(;i<len;i++){
         this.get(allKeys[i],function(point){
-          eachcallback(point);
+          if(point){
+            eachcallback(point);
+          }
         }); 
       }
     });
   });
 };
 
+var reindexMarkers = function(){
+  var index=0;
+  all(function(point){
+    point.markerid=index++; 
+    store(point); // does this update?
+  });
+};
+
 exports.store = store;
 exports.remove = remove;
 exports.all = all;
+exports.get = get;
+exports.reindexMarkers = reindexMarkers;
