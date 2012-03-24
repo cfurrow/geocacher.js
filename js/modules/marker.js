@@ -19,14 +19,12 @@ var dropMarkerAndRadius = function(latlng,radius){
   return marker;
 };
 
-var removeMarkerAndRadius = function(marker){
-  var matchingmarkers = _.filter(markers,function(m){
-    return m.marker.id === marker.id;
-  });
-  _.each(matchingmarkers,function(m){
+var removeMarkerAndRadius = function(markerid){
+  var m = markers[markerid];
+  if(m){
     mapstraction.mapstraction.removeMarker(m.marker);
     mapstraction.mapstraction.removePolyline(m.polyline);
-  });
+  }
 };
 
 exports.removeMarkerAndRadius = removeMarkerAndRadius;

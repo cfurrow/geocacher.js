@@ -50,11 +50,9 @@ var addPoint = function(eventObject){
   getLatLng(function(lat,lng,position){
     var latlng = new mxn.LatLonPoint(lat,lng);
     var m = marker.dropMarkerAndRadius(latlng,formatter.metersToMiles(position.coords.accuracy));
-    m.map = null;
-    m.mapstraction = null;
-    m.proprietary_marker = null;
-    storage.store({key:new Date().getTime(),lat:lat,lng:lng,position:position,marker:m});
-    history.add(new Date(),{lat:lat,lng:lng},position.coords.accuracy);
+    var date = new Date();
+    storage.store({key:date.getTime(),lat:lat,lng:lng,position:position,markerid:m.id});
+    history.add(date,{lat:lat,lng:lng},position.coords.accuracy);
     updateMap(map,latlng,position);
   });
 };
