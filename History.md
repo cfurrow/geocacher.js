@@ -1,4 +1,10 @@
 
+0.0.10 / 2012-03-24 
+==================
+  * Removing a row removes the marker
+  * conversion.js => formatter.js
+  * Lots of other minor changes.
+
 0.0.8 / 2012-03-14 
 ==================
 
