@@ -12,7 +12,7 @@ var updateIntervalHandle = null;
 var updateIntervalMs = 200;
 
 var dropMarker = function(latlng){
-  centerCircleRadius = new mxn.Radius(latlng,5);
+  centerCircleRadius = new mxn.Radius(latlng,15);
   startAnimation();
 };
 
@@ -28,7 +28,7 @@ var stepAnimation = function(){
     currentStep = 0;
   }
   mapstraction.mapstraction.removePolyline(centerCircle);
-  centerCircle = centerCircleRadius.getPolyline(currentStep,"#00f");
+  centerCircle = centerCircleRadius.getPolyline(currentStep,"#4D9453");
   mapstraction.mapstraction.addPolyline(centerCircle);
 };
 
