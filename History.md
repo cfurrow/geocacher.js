@@ -1,4 +1,9 @@
 
+0.0.11 / 2012-03-24 
+==================
+
+  * Animated marker created, using it as current position.
+
 0.0.10 / 2012-03-24 
 ==================
   * Removing a row removes the marker
