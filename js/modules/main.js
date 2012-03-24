@@ -34,7 +34,7 @@ var setupMap = function(lat,lng,position){
 
 var updateMap = function(map,latlng,position){
   console.log("Lat: " + latlng.lat + " Lng: " + latlng.lng + " Accuracy (meters): "+accuracyInMeters);
-  map.setCenterAndZoom(latlng,17);
+  map.setCenter(latlng);
 
   var accuracyInMiles = formatter.metersToMiles(accuracyInMeters);
   accuracyInMeters = position.coords.accuracy;
