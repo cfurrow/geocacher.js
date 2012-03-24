@@ -6,6 +6,7 @@ var storage = require('storage');
 var history = require('history');
 var mapstraction = require('mapstraction');
 var marker = require('marker');
+var animatedMarker = require("animated.marker");
 var self = this;
 var map, latlng, marker, accuracyInMeters;
 
@@ -16,6 +17,8 @@ var setupMap = function(lat,lng,position){
 
   latlng = new mxn.LatLonPoint(lat,lng);
   map.setCenterAndZoom(latlng,17);
+  animatedMarker.dropMarker(latlng);
+  animatedMarker.updatePositionContinuously();
 
   history.removeMarkerCallback = function(marker){
     map.removeMarker(marker); 
