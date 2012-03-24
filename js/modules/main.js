@@ -5,6 +5,7 @@ var formatter = require('formatter');
 var storage = require('storage');
 var history = require('history');
 var mapstraction = require('mapstraction');
+var marker = require('marker');
 var self = this;
 var map, latlng, marker, accuracyInMeters;
 
@@ -48,11 +49,11 @@ var addPoint = function(eventObject){
   eventObject.preventDefault();
   getLatLng(function(lat,lng,position){
     var latlng = new mxn.LatLonPoint(lat,lng);
-    var marker = dropMarkerAndRadius(map,latlng,formatter.metersToMiles(position.coords.accuracy));
-    marker.map = null;
-    marker.mapstraction = null;
-    marker.proprietary_marker = null;
-    storage.store({key:new Date().getTime(),lat:lat,lng:lng,position:position,marker:marker});
+    var m = marker.dropMarkerAndRadius(latlng,formatter.metersToMiles(position.coords.accuracy));
+    m.map = null;
+    m.mapstraction = null;
+    m.proprietary_marker = null;
+    storage.store({key:new Date().getTime(),lat:lat,lng:lng,position:position,marker:m});
     history.add(new Date(),{lat:lat,lng:lng},position.coords.accuracy);
     updateMap(map,latlng,position);
   });
