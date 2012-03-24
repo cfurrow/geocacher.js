@@ -9,6 +9,5 @@ var setup = function(){
     map_type:false});
 };
 
-
 exports.mapstraction = mapstraction;
 exports.setup = setup;
