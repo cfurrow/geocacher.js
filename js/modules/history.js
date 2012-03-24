@@ -3,7 +3,6 @@ var storage = require('storage');
 var marker = require('marker');
 var historyView = require('history.view');
 
-
 var setHistoryContainer = function(selector){
   $historyContainer = $(selector);
 };

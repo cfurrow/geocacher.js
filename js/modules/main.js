@@ -22,7 +22,7 @@ var setupMap = function(lat,lng,position){
   };
 
   history.restoreFromStorage(function(pointInfo){
-    dropMarkerAndRadius(map,latlng,formatter.metersToMiles(pointInfo.accuracy)); 
+    dropMarkerAndRadius(latlng,formatter.metersToMiles(pointInfo.accuracy)); 
   });
 
   updateLabels(latlng,position.coords.accuracy);
