@@ -1,4 +1,10 @@
 
+0.0.11.2 / 2012-03-24 
+==================
+
+  * gmaps v3 included, adding all mapstraction files
+  * Removing api key, zooming in to 20 by default.
+
 0.0.11.1 / 2012-03-24 
 ==================
 
