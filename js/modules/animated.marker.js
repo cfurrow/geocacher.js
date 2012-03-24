@@ -12,7 +12,7 @@ var updateIntervalHandle = null;
 var updateIntervalMs = 200;
 
 var dropMarker = function(latlng){
-  centerCircleRadius = new mxn.Radius(latlng,15);
+  centerCircleRadius = new mxn.Radius(latlng,5);
   startAnimation();
 };
 
