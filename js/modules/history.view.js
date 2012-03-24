@@ -22,9 +22,17 @@ $("body").delegate(".point .link-delete","click",function(e){
   }
   storage.get(key,function(point){
     if(point){
-      storage.remove(key);
+      console.log('Removing marker index: ' + point.markerid);
       marker.removeMarkerAndRadius(point.markerid);
       deleteCallback(self);
+      storage.remove(key);
+      storage.reindexMarkers();
+      marker.reindexMarkers();
+      console.log("Markers left: " + marker.markers.length);
+      console.log("Map.Markers left: " + mapstraction.mapstraction.markers.length);
+    }
+    else{
+      console.log("Point was null for key: " + key + ". Could not delete from storage.");
     }
   });
 });

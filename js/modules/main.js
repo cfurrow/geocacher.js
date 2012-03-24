@@ -22,6 +22,7 @@ var setupMap = function(lat,lng,position){
   };
 
   history.restoreFromStorage(function(pointInfo){
+    var latlng = new mxn.LatLonPoint(pointInfo.lat, pointInfo.lng);
     marker.dropMarkerAndRadius(latlng,formatter.metersToMiles(pointInfo.accuracy)); 
   });
 
