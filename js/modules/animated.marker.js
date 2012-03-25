@@ -48,13 +48,13 @@ var updatePosition = function(latlng,maxradius){
     step = 0.001;
   }
   else if(maxStep <= 0.1){
-    step = 0.003;
+    step = 0.002;
   }
   else if(maxStep <= 1){
-    step = 0.005;
+    step = 0.003;
   }
   else{
-    step = 0.008;
+    step = 0.004;
   }
 };
 
