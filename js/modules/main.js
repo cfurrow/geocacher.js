@@ -16,7 +16,7 @@ var setupMap = function(lat,lng,position){
   map = mapstraction.mapstraction;
 
   latlng = new mxn.LatLonPoint(lat,lng);
-  map.setCenterAndZoom(latlng,20);
+  map.setCenterAndZoom(latlng,17);
   animatedMarker.dropMarker(latlng);
   animatedMarker.updatePositionContinuously();
 

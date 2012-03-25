@@ -1,6 +1,6 @@
 var mapstraction = null;
 var setup = function(){
-  this.mapstraction = new mxn.Mapstraction('mapdiv','googlev3');
+  this.mapstraction = new mxn.Mapstraction('mapdiv','openlayers');
   this.mapstraction.addControls({
     pan:false,
     zoom:'small',

@@ -28,7 +28,7 @@ var stepAnimation = function(){
     currentStep = 0;
   }
   mapstraction.mapstraction.removePolyline(centerCircle);
-  centerCircle = centerCircleRadius.getPolyline(currentStep,"#4D9453");
+  centerCircle = centerCircleRadius.getPolyline(currentStep,"#1D5394");
   mapstraction.mapstraction.addPolyline(centerCircle);
 };
 
