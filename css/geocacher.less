@@ -1,5 +1,7 @@
 @maxWidth:800px;
 @media: desktop;
+@spanWidth: 40px;
+@spanGutterWidth: 10px;
 
 @media screen and (max-device-width:768px){
   @maxWidth:600px;
@@ -16,42 +18,57 @@
 
 body{
   width:@maxWidth;
+  padding:10px;
+}
+
+.table{
+  width:@maxWidth;
+  th{
+    background-color:#ccc;
+  }
+
+  &.border{
+    td{
+      border:solid 1px #ccc;
+    }
+  }
+}
+.row,tr{
+  .span1{
+    width: @spanWidth;
+    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span2{
+    width: @spanWidth * 2;
+    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span3{
+    width: @spanWidth * 3;
+    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span4{
+    width: @spanWidth * 4;
+    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span5{
+    width: @spanWidth * 5;
+    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+}
+
+.push-down-next{
+  margin-bottom:20px;
 }
 
 #mapdiv{
   width: @maxWidth;
   height: @maxWidth / 2;
 }
+.link-addpoint{
+  padding:5px;
+}
 
 #position-history{
-  width:@maxWidth;
-  th{
-    background-color:#ccc;
-  }
-  .column{
-    padding:5px;
-    width:100px;
-
-    &.column-time,
-    &.column-lat,
-    &.column-lng,
-    &.column-accuracy{
-      border:solid 1px #ccc;
-    }
-
-    &.column-time{
-      width:160px;
-    }
-
-    &.column-lat,
-    &.column-lng{
-    }
-
-    &.column-accuracy{
-      width:200px;
-    }
-  }
-
   .link-delete{
     color:#f00;
     padding:0 10px 0 0;
@@ -60,4 +77,12 @@ body{
       color:#f00;
     }
   }
+}
+
+#footer,
+footer{
+  margin:30px 0 0 0;
+  padding:10px;
+  height:75px;
+  background-color:#eee;
 }
