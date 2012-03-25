@@ -58,14 +58,18 @@ var updatePosition = function(latlng,maxradius){
   }
 };
 
-var updatePositionContinuously = function(){
-  updateIntervalHandle = setInterval(updatePositionFromNavigator,updateIntervalMs);
+var updatePositionContinuously = function(callback){
+  updateIntervalHandle = setInterval(function(){updatePositionFromNavigator(callback);},updateIntervalMs);
 };
 
-var updatePositionFromNavigator = function(){
+var updatePositionFromNavigator = function(callback){
   getLatLng(function(lat,lng,position){
+    var latlng = new mxn.LatLonPoint(lat,lng);
+    if(callback){
+      callback(latlng,position.coords.accuracy);
+    }
     updatePosition(
-        new mxn.LatLonPoint(lat,lng)
+        latlng
         ,formatter.metersToMiles(position.coords.accuracy)
     );  
   });

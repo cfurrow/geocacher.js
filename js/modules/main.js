@@ -18,7 +18,7 @@ var setupMap = function(lat,lng,position){
   latlng = new mxn.LatLonPoint(lat,lng);
   map.setCenterAndZoom(latlng,17);
   animatedMarker.dropMarker(latlng);
-  animatedMarker.updatePositionContinuously();
+  animatedMarker.updatePositionContinuously(updateLabels);
 
   history.removeMarkerCallback = function(marker){
     map.removeMarker(marker); 
