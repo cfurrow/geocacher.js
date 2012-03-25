@@ -25,33 +25,42 @@
   <div role="main">
 
     <div id="mapdiv"></div>
-    <p>
-      <a class="link-addpoint" href="#">Add Current Position</a>
-    </p>
-    <div id="labels">
-      <p>
-        <span id="lat"><strong>Lat:</strong> <span></span></span>
-      </p>
-      <p>
-        <span id="lng"><strong>Lng:</strong> <span></span></span>
-      </p>
-      <p>
-        <span id="accuracy"><strong>Accuracy:</strong> <span></span></span>
-      </p>
-    </div>
 
-    <table id="position-history">
+    <h4>Current Position:</h4>
+    <table class="table current-position border push-down-next">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Lat</th>
+          <th>Lng</th>
+          <th>Accuracy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="span4">
+            <button class="link-addpoint">Add Current Position</button>
+          </td>
+          <td id="lat" class="span3"> </td>
+          <td id="lng" class="span3"> </td>
+          <td id="accuracy" class="span4"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Saved Points:</h4>
+    <table id="position-history" class="table border">
       <tr>
-        <th class="column column-time">Time</th>
-        <th class="column column-time">Lat</th>
-        <th class="column column-time">Lng</th>
-        <th class="column column-accuracy">Accuracy</th>
+        <th class="span4">Time</th>
+        <th class="span3">Lat</th>
+        <th class="span3">Lng</th>
+        <th class="span4">Accuracy</th>
       </tr>
     </table>
 
   </div>
   <footer>
-
+    <a title="Rarrr, Furrowcious!" href="http://getfurrowcious.com">A Furrowcious Creation</a> &copy; 2012 
   </footer>
 
 

@@ -1,4 +1,14 @@
 
+0.0.12 / 2012-03-24 
+==================
+
+  * Animated marker can now take a callback that is called each time the marker position is updated. 
+    * Using to update map labels on each update.
+  * Simple footer styles.
+  * Animated marker color changed back to a lighter blue 
+  * Animated marker now goes as big as current accuracy Renaming vars, etc.
+  * Setting mapstraction back to openlayers (faster than gmaps? weird)
+
 0.0.11.2 / 2012-03-24 
 ==================
 

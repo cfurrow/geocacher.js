@@ -18,7 +18,7 @@ var setupMap = function(lat,lng,position){
   latlng = new mxn.LatLonPoint(lat,lng);
   map.setCenterAndZoom(latlng,17);
   animatedMarker.dropMarker(latlng);
-  animatedMarker.updatePositionContinuously();
+  animatedMarker.updatePositionContinuously(updateLabels);
 
   history.removeMarkerCallback = function(marker){
     map.removeMarker(marker); 
@@ -42,11 +42,10 @@ var updateMap = function(map,latlng,position){
 };
 
 var updateLabels = function(latlng,accuracyInMeters){
-  var $labels = $("#labels");
-  $labels.find("#lat>span").html(latlng.lat);
-  $labels.find("#lng>span").html(latlng.lng);
-
-  $labels.find("#accuracy>span").html(formatter.outputMetersAndFeet(accuracyInMeters));
+  var $labels = $(".current-position");
+  $labels.find("#lat").html(latlng.lat);
+  $labels.find("#lng").html(latlng.lng);
+  $labels.find("#accuracy").html(formatter.outputMetersAndFeet(accuracyInMeters));
 };
 
 var addPoint = function(eventObject){
