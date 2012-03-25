@@ -79,7 +79,13 @@ var stopUpdatingPosition = function(){
   clearInterval(updateIntervalHandle);
 };
 
+var unload = function(){
+  stopUpdatingPosition();
+  stopAnimation();
+};
+
 
 exports.dropMarker = dropMarker;
 exports.updatePositionContinuously = updatePositionContinuously;
 exports.stopUpdatingPosition = stopUpdatingPosition;
+exports.unload = unload;

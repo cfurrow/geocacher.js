@@ -60,7 +60,14 @@ var addPoint = function(eventObject){
   });
 };
 
+function unloaded()
+{
+  animatedMarker.unload();
+}
+
 $(".link-addpoint").click(addPoint);
 
 getLatLng(setupMap);
+
+window.onunload = unloaded;
 
