@@ -1,13 +1,16 @@
 var mapstraction = require("mapstraction");
 var getLatLng = require('navigator').getLatLng;
-var animatedRadius = null;
+var formatter = require('formatter');
+
 var centerCircle = null;
+var centerCircleRadius = null;
+
 var step = 0.001;
 var currentStep = 0;
+var minStep = 0.001;
 var maxStep = 0.01;
-var timeoutHandle = null;
+var animationIntervalHandle = null;
 var timeBetweenStepMs = 50;
-var centerCircleRadius = null;
 var updateIntervalHandle = null;
 var updateIntervalMs = 200;
 
@@ -17,7 +20,7 @@ var dropMarker = function(latlng){
 };
 
 var startAnimation = function(){
-  timeoutHandle = setInterval(stepAnimation,timeBetweenStepMs);
+  animationIntervalHandle = setInterval(stepAnimation,timeBetweenStepMs);
 };
 
 var stepAnimation = function(){
@@ -25,21 +28,34 @@ var stepAnimation = function(){
     currentStep += step;
   }
   else{
-    currentStep = 0;
+    currentStep = minStep;
   }
   mapstraction.mapstraction.removePolyline(centerCircle);
-  centerCircle = centerCircleRadius.getPolyline(currentStep,"#1D5394");
+  centerCircle = centerCircleRadius.getPolyline(currentStep,"#1111ff");
   mapstraction.mapstraction.addPolyline(centerCircle);
 };
 
 var stopAnimation = function(){
-  clearInterval(timeoutHandle);
+  clearInterval(animationIntervalHandle);
 };
 
-var updatePosition = function(latlng){
+var updatePosition = function(latlng,maxradius){
   stopAnimation();
   centerCircleRadius = new mxn.Radius(latlng,15);
   startAnimation();
+  maxStep = maxradius
+  if(maxStep <= 0.01){
+    step = 0.001;
+  }
+  else if(maxStep <= 0.1){
+    step = 0.003;
+  }
+  else if(maxStep <= 1){
+    step = 0.005;
+  }
+  else{
+    step = 0.008;
+  }
 };
 
 var updatePositionContinuously = function(){
@@ -47,8 +63,11 @@ var updatePositionContinuously = function(){
 };
 
 var updatePositionFromNavigator = function(){
-  getLatLng(function(lat,lng){
-    updatePosition(new mxn.LatLonPoint(lat,lng));  
+  getLatLng(function(lat,lng,position){
+    updatePosition(
+        new mxn.LatLonPoint(lat,lng)
+        ,formatter.metersToMiles(position.coords.accuracy)
+    );  
   });
 };
 
