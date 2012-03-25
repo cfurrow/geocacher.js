@@ -1,4 +1,10 @@
 
+0.0.13 / 2012-03-24 
+==================
+
+  * Slowing animations for current position marker.
+  * Adding window.onunload. Animated marker stopping animation, etc, on unload
+
 0.0.12 / 2012-03-24 
 ==================
 
