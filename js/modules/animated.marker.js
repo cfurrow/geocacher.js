@@ -1,21 +1,21 @@
 var initAnimatedMarker = function(dependencies){
   var exports = {};
 
-  var mapstraction = dependencies.mapstraction;
-  var getLatLng = dependencies.navigator.getLatLng;
-  var formatter = dependencies.formatter;
+  var mapstraction            = dependencies.mapstraction;
+  var getLatLng               = dependencies.navigator.getLatLng;
+  var formatter               = dependencies.formatter;
 
-  var centerCircle = null;
-  var centerCircleRadius = null;
+  var centerCircle            = null;
+  var centerCircleRadius      = null;
 
-  var step = 0.001;
-  var currentStep = 0;
-  var minStep = 0.001;
-  var maxStep = 0.01;
+  var step                    = 0.001;
+  var currentStep             = 0;
+  var minStep                 = 0.001;
+  var maxStep                 = 0.01;
   var animationIntervalHandle = null;
-  var timeBetweenStepMs = 50;
-  var updateIntervalHandle = null;
-  var updateIntervalMs = 200;
+  var timeBetweenStepMs       = 50;
+  var updateIntervalHandle    = null;
+  var updateIntervalMs        = 5000;
 
   var dropMarker = function(latlng){
     centerCircleRadius = new mxn.Radius(latlng,15);
@@ -62,7 +62,11 @@ var initAnimatedMarker = function(dependencies){
   };
 
   var updatePositionContinuously = function(callback){
-    updateIntervalHandle = setInterval(function(){updatePositionFromNavigator(callback);},updateIntervalMs);
+    updateIntervalHandle = setInterval(
+      function(){
+        updatePositionFromNavigator(callback);
+      }
+      ,updateIntervalMs);
   };
 
   var updatePositionFromNavigator = function(callback){
@@ -86,7 +90,6 @@ var initAnimatedMarker = function(dependencies){
     stopUpdatingPosition();
     stopAnimation();
   };
-
 
   exports.dropMarker = dropMarker;
   exports.updatePositionContinuously = updatePositionContinuously;
