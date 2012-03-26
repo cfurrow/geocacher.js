@@ -16,7 +16,7 @@ var initHistoryView = function(dependencies){
     $link.parents("tr#"+key).remove();
   };
 
-  $("body").delegate(".point .link-delete","click",function(e){
+  $historyContainer.delegate(".point .link-delete","click",function(e){
     e.preventDefault();
     var key = $(this).attr("data-key");
     var self = this;
@@ -39,6 +39,14 @@ var initHistoryView = function(dependencies){
       }
     });
   });
+
+	$historyContainer.delegate(".point .link-view","click",function(e){
+    e.preventDefault();
+    var key = $(this).attr("data-key");
+		storage.get(key,function(point){
+			mapstraction.mapstraction.setCenterAndZoom(marker.markers[point.markerid].marker.location,17);
+		});
+	});
 
   exports.addNewHistoryRow = addNewHistoryRow;
   exports.addMarkerCallback = function(){};

@@ -68,12 +68,9 @@ console.log("geocacher.js - init");
   {
     animatedMarker.unload();
   }
-
-  $(".link-addpoint").click(addPoint);
-
-
-  nav.getLatLng(setupMap);
-
-  window.onunload = unloaded;
-
+	$(function(){
+		$(".link-addpoint").click(addPoint);
+		nav.getLatLng(setupMap);
+		window.onunload = unloaded;
+	});
 })();
