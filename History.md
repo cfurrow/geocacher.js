@@ -1,4 +1,10 @@
 
+0.0.14 / 2012-03-26 
+==================
+
+  * Removing injectjs from index.html, requiring all scripts 
+    * Rewriting modules to not use inject's require, but instead init functions that take deps as params 
+
 0.0.13 / 2012-03-24 
 ==================
 
