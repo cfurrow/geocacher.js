@@ -66,7 +66,6 @@
 
   <script src="js/libs/jquery-1.7.1.min.js"></script>
   <script src="js/plugins.js"></script>
-  <script src="js/libs/inject.js"></script>
   <script src="js/libs/lawnchair-0.6.1.js"></script>
   <script src="js/libs/pubsub.js"></script>
   <script src="js/libs/underscore-min.js"></script>
@@ -74,11 +73,17 @@
   <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
   <script src="js/mxn/mxn.js?(openlayers)"></script>
   <script src="js/mxn/mxn.openlayers.core-min.js"></script>
-  <script>
-    require.setModuleRoot("/js/modules"); 
-    require.setExpires(0);
-    require.run("main");
-  </script>
+
+  <script src="js/modules/animated.marker.js"></script>
+  <script src="js/modules/formatter.js"></script>
+  <script src="js/modules/history.js"></script>
+  <script src="js/modules/history.view.js"></script>
+  <script src="js/modules/mapstraction.js"></script>
+  <script src="js/modules/marker.js"></script>
+  <script src="js/modules/navigator.js"></script>
+  <script src="js/modules/storage.js"></script>
+
+  <script src="js/modules/main.js"></script>
 
   <script>
     var _gaq=[['_setAccount','UA-29995955-1'],['_trackPageview']];
