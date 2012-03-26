@@ -23,6 +23,9 @@ var initHistory = function(dependencies){
     html.push(datetime.getTime());
     html.push("'>[x]</a>");
     html.push(nowHtml);
+		html.push("  <a href='#' title='View this point' class='link-view' data-key='");
+    html.push(   datetime.getTime());
+    html.push("'>View</a>");
     html.push("  </td>");
 
     html.push("  <td class='column column-lat'>");
