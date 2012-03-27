@@ -24,6 +24,5 @@ describe("formatter",function(){
     var feet = meters * 3.2808399;
 
     expect(formatter.outputMetersAndFeet(meters)).toEqual( meters.toFixed(2) + "m / " + feet.toFixed(2) + "ft");
-  
   });
 });
