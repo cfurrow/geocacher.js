@@ -9,17 +9,19 @@
   <link rel="stylesheet" type="text/css" href="jasmine-1.1.0/jasmine.css">
   <script type="text/javascript" src="jasmine-1.1.0/jasmine.js"></script>
   <script type="text/javascript" src="jasmine-1.1.0/jasmine-html.js"></script>
-  <script type="text/javascript" src="../libs/inject.min.js"></script>
-  <script>
-    require.setModuleRoot("/js/modules"); 
-    require.setExpires(0);
-    require.run('loadall');
-  </script>
 
   <!-- include spec files here... -->
   <script type="text/javascript" src="animated.marker.tests.js"></script>
+  <script type="text/javascript" src="formatter.tests.js"></script>
 
   <!-- include source files here... -->
+  <script src="../modules/animated.marker.js"></script>
+  <script src="../modules/formatter.js"></script>
+  <script src="../modules/history.js"></script>
+  <script src="../modules/history.view.js"></script>
+  <script src="../modules/marker.js"></script>
+  <script src="../modules/navigator.js"></script>
+  <script src="loader.js"></script>
 
   <script type="text/javascript">
     (function() {
