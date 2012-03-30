@@ -50,8 +50,8 @@ var initMarker  = function(dependencies){
     markers = newArray;
   };
 
-  exports.removeMarkerAndRadius = removeMarkerAndRadius;
   exports.dropMarkerAndRadius = dropMarkerAndRadius;
+  exports.removeMarkerAndRadius = removeMarkerAndRadius;
   exports.markers = markers;
   exports.reindexMarkers = reindexMarkers;
   return exports;
