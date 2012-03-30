@@ -12,7 +12,7 @@ console.log("geocacher.js - init");
   var animatedMarker = initAnimatedMarker({mapstraction:mapstraction,navigator:nav,formatter:formatter});
 
   var self = this;
-  var map, latlng, marker, accuracyInMeters;
+  var map, latlng, accuracyInMeters;
 
   // setupMap: Used as a callback from navigator.getLatLng
   var setupMap = function(lat,lng,position){
@@ -24,8 +24,8 @@ console.log("geocacher.js - init");
     animatedMarker.dropMarker(latlng);
     animatedMarker.updatePositionContinuously(updateLabels);
 
-    history.removeMarkerCallback = function(marker){
-      map.removeMarker(marker); 
+    history.removeMarkerCallback = function(m){
+      map.removeMarker(m); 
     };
 
     history.restoreFromStorage(function(pointInfo){

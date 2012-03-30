@@ -9,7 +9,7 @@ var initFormatter = function(dependencies){
     var feet = metersToFeet(meters);
     var miles = feet/5280;
     return miles.toFixed(2);
-  }
+  };
 
   var outputMetersAndFeet = function(meters){
     var accuracyInFeet = metersToFeet(meters);

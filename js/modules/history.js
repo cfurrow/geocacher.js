@@ -61,4 +61,4 @@ var initHistory = function(dependencies){
   exports.restoreFromStorage = restoreFromStorage;
 
   return exports;
-}
+};

@@ -46,7 +46,7 @@ var initAnimatedMarker = function(dependencies){
     stopAnimation();
     centerCircleRadius = new mxn.Radius(latlng,15);
     startAnimation();
-    maxStep = maxradius
+    maxStep = maxradius;
     if(maxStep <= 0.01){
       step = 0.001;
     }
@@ -65,8 +65,7 @@ var initAnimatedMarker = function(dependencies){
     updateIntervalHandle = setInterval(
       function(){
         updatePositionFromNavigator(callback);
-      }
-      ,updateIntervalMs);
+      },updateIntervalMs);
   };
 
   var updatePositionFromNavigator = function(callback){
@@ -76,8 +75,8 @@ var initAnimatedMarker = function(dependencies){
         callback(latlng,position.coords.accuracy);
       }
       updatePosition(
-          latlng
-          ,formatter.metersToMiles(position.coords.accuracy)
+          latlng,
+          formatter.metersToMiles(position.coords.accuracy)
       );  
     });
   };
