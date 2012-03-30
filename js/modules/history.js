@@ -1,4 +1,4 @@
-;var initHistory = function(dependencies){
+var initHistory = function(dependencies){
   var exports = {};
   var formatter = dependencies.formatter;
   var storage = dependencies.storage;
