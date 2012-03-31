@@ -8,7 +8,7 @@ var initHistoryView = function(dependencies){
 
   var addNewHistoryRow = function(html){
     $(html).appendTo($historyContainer);
-  }
+  };
 
   var deleteClick = function(eventObj){
     var $link = $(this);
@@ -22,7 +22,7 @@ var initHistoryView = function(dependencies){
     var self = this;
     var deleteCallback = function(context){
       deleteClick.call(context,e);
-    }
+    };
     storage.get(key,function(point){
       if(point){
         console.log('Removing marker index: ' + point.markerid);
@@ -52,4 +52,4 @@ var initHistoryView = function(dependencies){
   exports.addMarkerCallback = function(){};
   exports.removeMarkerCallback = function(){};
   return exports;
-}
+};

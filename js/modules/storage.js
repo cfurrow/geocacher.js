@@ -23,12 +23,13 @@ var initStorage = function(dependencies){
 			this.keys(function(allKeys){
 				var i=0;
 				var len = allKeys.length;
+        var runCallbackIfPointIsNotUndef = function(point){
+          if(point){
+            eachcallback(point);
+          }
+        };
 				for(;i<len;i++){
-					this.get(allKeys[i],function(point){
-						if(point){
-							eachcallback(point);
-						}
-					}); 
+					this.get(allKeys[i],runCallbackIfPointIsNotUndef); 
 				}
 			});
 		});
