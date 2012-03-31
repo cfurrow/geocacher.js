@@ -29,15 +29,16 @@ var initHistory = function(dependencies){
     html.push("  </td>");
 
     html.push("  <td class='column column-lat'>");
-    html.push(latlng.lat.toFixed(6));
+    html.push(latlng.lat.toFixed(4));
     html.push("  </td>");
 
     html.push("  <td class='column column-lng'>");
-    html.push(latlng.lng.toFixed(6));
+    html.push(latlng.lng.toFixed(4));
     html.push("  </td>");
 
     html.push("  <td class='column column-accuracy'>");
-    html.push(formatter.outputMetersAndFeet(accuracy));
+    html.push(formatter.metersToFeet(accuracy));
+    html.push("ft");
     html.push("  </td>");
 
     html.push("</tr>");

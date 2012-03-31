@@ -2,6 +2,7 @@
 @media: desktop;
 @spanWidth: 40px;
 @spanGutterWidth: 10px;
+@defaultFontSize: 24pt;
 
 @media screen and (max-device-width:960px){
   @maxWidth:640px;
@@ -67,12 +68,13 @@ only screen and (-webkit-min-device-pixel-ratio : 1.5),
 only screen and (min-device-pixel-ratio : 1.5) {
   @maxWidth:640px;
   @media:mobile;
+  @defaultFontSize: 36pt;
 }
 
 body{
   width:@maxWidth;
   padding:10px;
-  font-size:24px;
+  font-size:@defaultFontSize;
 }
 
 .table{

@@ -1,4 +1,4 @@
-window.VERSION = 0.21;
+window.VERSION = 0.22;
 console.log("geocacher.js - init v"+window.VERSION);
 
 (function(){
@@ -53,7 +53,7 @@ console.log("geocacher.js - init v"+window.VERSION);
     var $labels = $(".current-position");
     $labels.find("#lat").html(latlng.lat.toFixed(3));
     $labels.find("#lng").html(latlng.lng.toFixed(3));
-    $labels.find("#accuracy").html(formatter.outputMetersAndFeet(accuracyInMeters));
+    $labels.find("#accuracy").html(formatter.metersToFeet(accuracyInMeters)+"ft");
   };
 
   var addPoint = function(eventObject){
