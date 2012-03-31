@@ -1,4 +1,4 @@
-window.VERSION = 0.12;
+window.VERSION = 0.20;
 console.log("geocacher.js - init v"+window.VERSION);
 
 (function(){

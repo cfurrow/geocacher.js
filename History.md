@@ -1,4 +1,11 @@
 
+0.0.20 / 2012-03-31 
+==================
+
+  * Setting up app cache and ios meta tag to run fullscreen.
+  * Adding jasmine tests
+  * Adding grunt
+
 0.0.15 / 2012-03-26 
 ==================
 
