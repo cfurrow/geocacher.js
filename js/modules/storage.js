@@ -29,7 +29,7 @@ var initStorage = function(dependencies){
           }
         };
 				for(;i<len;i++){
-					this.get(allKeys[i],runCallbackIfPointIsNotUndef(point)); 
+					this.get(allKeys[i],runCallbackIfPointIsNotUndef); 
 				}
 			});
 		});

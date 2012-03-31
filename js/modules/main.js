@@ -1,4 +1,5 @@
-console.log("geocacher.js - init");
+window.VERSION = 0.12;
+console.log("geocacher.js - init v"+window.VERSION);
 
 (function(){
   var nav = initNavigator();
@@ -16,6 +17,9 @@ console.log("geocacher.js - init");
 
   // setupMap: Used as a callback from navigator.getLatLng
   var setupMap = function(lat,lng,position){
+    if(!window.navigator.onLine){
+      mapstraction.setOffline();
+    }
     mapstraction.setup();
     map = mapstraction.mapstraction;
 
