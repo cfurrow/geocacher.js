@@ -5,11 +5,11 @@ var initHistory = function(dependencies){
   var marker = dependencies.marker;
   var historyView = dependencies.historyView;
 
-  var setHistoryContainer = function(selector){
+  exports.setHistoryContainer = function(selector){
     $historyContainer = $(selector);
   };
 
-  var add = function(datetime, latlng, accuracy){
+  exports.add = function(datetime, latlng, accuracy){
     var nowHtml = formatter.getDateTimeString(datetime);
 
     var html = [];
@@ -44,10 +44,10 @@ var initHistory = function(dependencies){
     historyView.addNewHistoryRow(html.join(""));
   };
 
-  var restoreFromStorage = function(callback){
+  exports.restoreFromStorage = function(callback){
     storage.all(function(point){
       if(point){
-        add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
+        exports.add(new Date(point.key),{lat:point.lat,lng:point.lng},point.position.coords.accuracy); 
         // add marker to map
         if(callback){
           callback({lat:point.lat,lng:point.lng,accuracy:point.position.coords.accuracy});
@@ -55,10 +55,6 @@ var initHistory = function(dependencies){
       }
     });
   };
-
-  exports.setHistoryContainer = setHistoryContainer;
-  exports.add = add;
-  exports.restoreFromStorage = restoreFromStorage;
 
   return exports;
 };
