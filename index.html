@@ -22,26 +22,23 @@
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header>
+  <!--
     <h1>geocacher.js</h1>
+  -->
   </header>
   <div role="main">
 
     <div id="mapdiv"></div>
 
-    <h4>Current Position:</h4>
+    <div class="row">
+      <button class="offset5 span10 center link-addpoint">Add Current Position</button>
+    </div>
+
     <table class="table current-position border push-down-next">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Lat</th>
-          <th>Lng</th>
-          <th>Accuracy</th>
-        </tr>
-      </thead>
       <tbody>
         <tr>
           <td class="span4">
-            <button class="link-addpoint">Add Current Position</button>
+            Current:
           </td>
           <td id="lat" class="span3"> </td>
           <td id="lng" class="span3"> </td>

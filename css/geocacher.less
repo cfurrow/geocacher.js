@@ -72,6 +72,7 @@ only screen and (min-device-pixel-ratio : 1.5) {
 body{
   width:@maxWidth;
   padding:10px;
+  font-size:24px;
 }
 
 .table{
@@ -89,23 +90,73 @@ body{
 .row,tr{
   .span1{
     width: @spanWidth;
-    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
   }
   .span2{
     width: @spanWidth * 2;
-    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
   }
   .span3{
     width: @spanWidth * 3;
-    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
   }
   .span4{
     width: @spanWidth * 4;
-    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
   }
   .span5{
     width: @spanWidth * 5;
-    padding: 0 @spanGutterWidth 0 @spanGutterWidth;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span6{
+    width: @spanWidth * 6;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span7{
+    width: @spanWidth * 7;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span8{
+    width: @spanWidth * 8;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span9{
+    width: @spanWidth * 9;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span10{
+    width: @spanWidth * 10;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span11{
+    width: @spanWidth * 11;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .span12{
+    width: @spanWidth * 12;
+    margin: 0 @spanGutterWidth 0 @spanGutterWidth;
+  }
+  .offset1{
+    margin: 0 @spanGutterWidth 0 @spanWidth;
+  }
+  .offset2{
+    margin: 0 @spanGutterWidth 0 @spanWidth * 2;
+  }
+  .offset3{
+    margin: 0 @spanGutterWidth 0 @spanWidth * 3;
+  }
+  .offset4{
+    margin: 0 @spanGutterWidth 0 @spanWidth * 4;
+  }
+  .offset5{
+    margin: 0 @spanGutterWidth 0 @spanWidth * 5;
+  }
+  .offset6{
+    margin: 0 @spanGutterWidth 0 @spanWidth * 6;
+  }
+
+  .center{
+    text-align:center;
   }
 }
 
@@ -118,7 +169,7 @@ body{
   height: @maxWidth / 2;
 }
 .link-addpoint{
-  padding:5px;
+  padding:10px;
 }
 
 #position-history{
