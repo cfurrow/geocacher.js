@@ -1,4 +1,14 @@
 
+0.0.22 / 2012-03-31 
+==================
+
+  * Removing more lat/lng decimals (max 4, from 6) 
+  * Increasing font size again for iphone 
+  * Formatting date/time differently 
+  * No longer showing meters in UI, just feet.
+  * Upping font-size. 
+  * Moved "Add Point" button to just below map. Bigger.
+
 0.0.20 / 2012-03-31 
 ==================
 

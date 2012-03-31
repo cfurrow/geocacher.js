@@ -23,16 +23,18 @@ var initFormatter = function(dependencies){
 
   var getDateTimeString = function(now){
     var nowHtml = [];
-    nowHtml.push(now.getYear()+1900);
-    nowHtml.push(".");
+    var showPM = false;
     nowHtml.push(now.getMonth()+1);
-    nowHtml.push(".");
+    nowHtml.push("/");
     nowHtml.push(now.getDate());
+    nowHtml.push("/");
+    nowHtml.push((now.getYear()+1900)-2000);
     nowHtml.push(" ");
     nowHtml.push(now.getHours());
     nowHtml.push(":");
-    if(now.getMinutes() < 10){
-      nowHtml.push("0"+now.getMinutes());
+    if(now.getMinutes() > 12){
+      nowHtml.push(now.getMinutes()-12);
+      showPM=true;
     }
     else{
       nowHtml.push(now.getMinutes());
@@ -43,6 +45,12 @@ var initFormatter = function(dependencies){
     }
     else{
       nowHtml.push(now.getSeconds());
+    }
+    if(showPM){
+      nowHtml.push("pm");
+    }
+    else{
+      nowHtml.push("am");
     }
     return nowHtml.join("");
   };
