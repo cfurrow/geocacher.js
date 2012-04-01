@@ -1,6 +1,8 @@
 var initNavigator = function(dependencies){
 	var exports = {};
-	var getLatLng = function(callback){
+  var accuracySettings = {enableHighAccuracy:true,maximumAge:1000};
+
+	var getLatLng = function(callback,errorcallback){
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(
 				function(pos){
@@ -9,12 +11,23 @@ var initNavigator = function(dependencies){
 				function(){
 					//error callback 
 					console.log("Error getting current position");
+          if(errorcallback){
+            errorcallback();
+          }
 				},
-				{enableHighAccuracy:true}
+				accuracySettings 
 			);
 		}
 	};
 
+  var setContinuiousUpdateCallback = function(callback,errorcallback){
+    if(navigator && navigator.geolocation){
+      return navigator.geolocation.watchPosition(callback,errorcallback,accuracySettings);
+    }
+    return null;
+  };
+
 	exports.getLatLng = getLatLng;
+  exports.setContinuiousUpdateCallback = setContinuiousUpdateCallback;
 	return exports;
 };
