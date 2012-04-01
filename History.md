@@ -1,4 +1,13 @@
 
+0.0.27 / 2012-04-01 
+==================
+
+  * Gmapsv3 setup. 
+  * Custom icons downloaded for markers and current position. 
+  * Increasing marker icon size (resized 2x). 
+  * Using gmapsv3 api to set icon animation and position instead of remove/create. 
+  * Adding "where am I" image button.
+
 0.0.23 / 2012-03-31 
 ==================
 
