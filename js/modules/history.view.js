@@ -44,7 +44,7 @@ var initHistoryView = function(dependencies){
     e.preventDefault();
     var key = $(this).attr("data-key");
 		storage.get(key,function(point){
-			mapstraction.mapstraction.setCenterAndZoom(marker.markers[point.markerid].marker.location,17);
+			mapstraction.mapstraction.setCenterAndZoom(marker.markers[point.markerid].marker.location,mapstraction.maxZoom);
 		});
 	});
 

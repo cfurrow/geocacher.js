@@ -1,4 +1,4 @@
-window.VERSION = 0.23;
+window.VERSION = 0.27;
 console.log("geocacher.js - init v"+window.VERSION);
 
 (function(){
@@ -24,7 +24,7 @@ console.log("geocacher.js - init v"+window.VERSION);
     map = mapstraction.mapstraction;
 
     latlng = new mxn.LatLonPoint(lat,lng);
-    map.setCenterAndZoom(latlng,17);
+    map.setCenterAndZoom(latlng,mapstraction.maxZoom);
     animatedMarker.dropMarker(latlng);
     animatedMarker.updatePositionContinuously(updateLabels);
 
@@ -68,12 +68,21 @@ console.log("geocacher.js - init v"+window.VERSION);
     });
   };
 
+  var whereAmI = function(eventObject){
+    eventObject.preventDefault();
+    nav.getLatLng(function(lat,lng,position){
+      var latlng = new mxn.LatLonPoint(lat,lng);
+      updateMap(map,latlng,position);
+    });
+  };
+
   function unloaded()
   {
     animatedMarker.unload();
   }
 	$(function(){
 		$(".link-addpoint").click(addPoint);
+    $(".link-whereami").click(whereAmI);
 		nav.getLatLng(setupMap);
 		window.onunload = unloaded;
 	});
