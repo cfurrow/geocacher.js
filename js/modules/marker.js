@@ -6,11 +6,12 @@ var initMarker  = function(dependencies){
 
   var dropMarkerAndRadius = function(latlng,radius){
     var marker = new mxn.Marker(latlng);
+    marker.setIcon("/img/markers/map2x.png",[64,74],[32,64]);
     mapstraction.mapstraction.addMarker(marker);
 
-    var r = new mxn.Radius(latlng,15);
+    var r = new mxn.Radius(latlng,mapstraction.circleQuality);
 
-    var polyline = r.getPolyline(radius,"#000fff");
+    var polyline = r.getPolyline(radius,"#6a93d4");
     polyline.setClosed(true);
     mapstraction.mapstraction.addPolyline(polyline);
 
