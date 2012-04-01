@@ -4,8 +4,11 @@ var initMarker  = function(dependencies){
   var markers = [];
   var id = 0;
 
-  var dropMarkerAndRadius = function(latlng,radius){
+  var dropMarkerAndRadius = function(latlng,radius,description){
     var marker = new mxn.Marker(latlng);
+    if(description){
+      marker.setInfoBubble(description);
+    }
     marker.setIcon("/img/markers/map2x.png",[64,74],[32,64]);
     mapstraction.mapstraction.addMarker(marker);
 
@@ -17,7 +20,7 @@ var initMarker  = function(dependencies){
 
     console.log("Adding marker at index: " + id);
     marker.id = id++;
-    markers.push({marker:marker,polyline:polyline});
+    markers.push({marker:marker,polyline:polyline,description:description});
     console.log("New markers count: " + markers.length);
 
     return marker;

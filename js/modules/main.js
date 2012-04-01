@@ -34,7 +34,7 @@ console.log("geocacher.js - init v"+window.VERSION);
 
     history.restoreFromStorage(function(pointInfo){
       var latlng = new mxn.LatLonPoint(pointInfo.lat, pointInfo.lng);
-      marker.dropMarkerAndRadius(latlng,formatter.metersToMiles(pointInfo.accuracy)); 
+      marker.dropMarkerAndRadius(latlng,formatter.metersToMiles(pointInfo.accuracy),pointInfo.description); 
     });
 
     updateLabels(latlng,position.coords.accuracy);
