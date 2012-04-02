@@ -77,9 +77,12 @@ console.log("geocacher.js - init v"+window.VERSION);
       // Success
       function(lat,lng,position){
         setup(lat,lng,position);
+        $(".no-location").hide();
+        $(".has-location").show();
       },
       // Error
-      function(){
+      function(error){
+        console.log(error); 
         $(".no-location").show();
         $(".has-location").hide();
     });
