@@ -28,7 +28,9 @@ console.log("geocacher.js - init v"+window.VERSION);
         updateLabels(position);
       },
       // Error
-      function(){});
+      function(error){
+        console.log(error); 
+      });
 
     map.setCenterAndZoom(lat,lng,map.maxZoom);
 
