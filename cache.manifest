@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#version 0.50.374
+#version 0.50.382
 
 index.html
 css/style.css
@@ -21,7 +21,7 @@ js/plugins.js
 js/libs/lawnchair-0.6.1.js
 js/libs/pubsub.js
 js/libs/underscore-min.js
-js/libs/googlev3/gmaps.js
+#js/libs/googlev3/gmaps.js
 js/modules/formatter.js
 js/modules/history.js
 js/modules/history.view.js
