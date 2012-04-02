@@ -55,6 +55,11 @@ var initMap = function(dependencies){
     return marker;
   };
 
+  var removeMarker = function(m){
+    m.setMap(null);
+    m = null;
+  };
+
   var addBouncingMarker = function(lat,lng){
     var marker = addMarker(lat,lng);
     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -98,6 +103,7 @@ var initMap = function(dependencies){
 
   exports.addMarker = addMarker;
   exports.addBouncingMarker = addBouncingMarker;
+  exports.removeMarker = removeMarker;
   exports.updateMarkerPosition = updateMarkerPosition;
   exports.setCenter = setCenter;
   exports.setCenterAndZoom = setCenterAndZoom;

@@ -18,7 +18,6 @@ var initMarker  = function(dependencies){
     var m = markers[markerid];
     if(m){
       map.removeMarker(m.marker);
-      map.removePolyline(m.polyline);
       markers = removeMarker(markerid);
     }
     else{
