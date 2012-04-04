@@ -1,33 +1,23 @@
 var initMarker  = function(dependencies){
   var exports = {};
-  var mapstraction = dependencies.mapstraction;
+  var map = dependencies.map;
   var markers = [];
   var id = 0;
 
-  var dropMarkerAndRadius = function(latlng,radius){
-    var marker = new mxn.Marker(latlng);
-    marker.setIcon("/img/markers/map2x.png",[64,74],[32,64]);
-    mapstraction.mapstraction.addMarker(marker);
+  var dropMarkerAndRadius = function(lat,lng,radius,description){
+    var m = map.addMarker(lat,lng);
+    //map.updateMarkerIcon(m,"/img/markers/map2x.png");
 
-    var r = new mxn.Radius(latlng,mapstraction.circleQuality);
+    m.id = id++;
+    markers.push({marker:m,description:description});
 
-    var polyline = r.getPolyline(radius,"#6a93d4");
-    polyline.setClosed(true);
-    mapstraction.mapstraction.addPolyline(polyline);
-
-    console.log("Adding marker at index: " + id);
-    marker.id = id++;
-    markers.push({marker:marker,polyline:polyline});
-    console.log("New markers count: " + markers.length);
-
-    return marker;
+    return m;
   };
 
   var removeMarkerAndRadius = function(markerid){
     var m = markers[markerid];
     if(m){
-      mapstraction.mapstraction.removeMarker(m.marker);
-      mapstraction.mapstraction.removePolyline(m.polyline);
+      map.removeMarker(m.marker);
       markers = removeMarker(markerid);
     }
     else{

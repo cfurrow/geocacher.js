@@ -30,15 +30,15 @@ var initFormatter = function(dependencies){
     nowHtml.push("/");
     nowHtml.push((now.getYear()+1900)-2000);
     nowHtml.push(" ");
-    nowHtml.push(now.getHours());
-    nowHtml.push(":");
-    if(now.getMinutes() > 12){
-      nowHtml.push(now.getMinutes()-12);
+    if(now.getHours() > 12){
+      nowHtml.push(now.getHours()-12);
       showPM=true;
     }
     else{
-      nowHtml.push(now.getMinutes());
+      nowHtml.push(now.getHours());
     }
+    nowHtml.push(":");
+    nowHtml.push(now.getMinutes());
     nowHtml.push(":");
     if(now.getSeconds() < 10){
       nowHtml.push("0"+now.getSeconds());

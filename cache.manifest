@@ -1,12 +1,11 @@
 CACHE MANIFEST
-#version 0.50.321
+#version 0.50.382
 
 index.html
 css/style.css
 css/geocacher.less
 
 img/offline.jpg
-img/marker-gold.png
 img/markers/footprint.png
 img/markers/map.png
 img/markers/footprint2x.png
@@ -22,35 +21,11 @@ js/plugins.js
 js/libs/lawnchair-0.6.1.js
 js/libs/pubsub.js
 js/libs/underscore-min.js
-js/libs/leaflet/leaflet.js
-js/libs/leaflet/leaflet.css
-js/libs/leaflet/leaflet.ie.css
-js/libs/leaflet/images/zoom-in.png
-js/libs/leaflet/images/zoom-out.png
-js/libs/leaflet/images/marker.png
-js/libs/leaflet/images/marker-shadow.png
-js/libs/openlayers/OpenLayers.js
-js/libs/openlayers/theme/default/style.css
-js/libs/openlayers/theme/default/img/zoom-panel.png
-js/libs/openlayers/img/east-mini.png
-js/libs/openlayers/img/west-mini.png
-js/libs/openlayers/img/south-mini.png
-js/libs/openlayers/img/north-mini.png
-js/libs/openlayers/img/zoom-minus-mini.png
-js/libs/openlayers/img/zoom-plus-mini.png
-js/libs/openlayers/img/zoom-world-mini.png
-js/libs/googlev3/gmaps.js
-js/mxn/mxn.js
-js/mxn/mxn.core.js
-js/mxn/mxn.geocoder.js
-js/mxn/mxn.openlayers.core.js
-js/mxn/mxn.leaflet.core.js
-js/mxn/mxn.googlev3.core.js
-js/modules/animated.marker.js
+#js/libs/googlev3/gmaps.js
 js/modules/formatter.js
 js/modules/history.js
 js/modules/history.view.js
-js/modules/mapstraction.js
+js/modules/map.js
 js/modules/marker.js
 js/modules/navigator.js
 js/modules/storage.js
